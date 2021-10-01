@@ -1,6 +1,11 @@
 from random import randint
 from time import sleep
 
+# VARIAVEIS GLOBAIS
+jogo_rodando = True
+jogador_linha = jogador_coluna = 0
+
+
 def titulo(msg = str):
     n = len(msg) + 4
     print('='*n)
@@ -62,15 +67,7 @@ def checar_Vencedor(lista = []):
         print('Voce perdeu :(')
         jogo_rodando = False
 
-# CRIA O TABULEIRO
-
-
-# VARIAVEIS GLOBAIS
-jogo_rodando = True
-jogador_linha = jogador_coluna = 0
-
 # LOOP DO JOGO
-
 while True:
     titulo('JOGO DA VELHA')
     jogo_rodando = True
@@ -83,10 +80,10 @@ while True:
     while jogo_rodando:
         mostrar(tabuleiro)
         checar_Vencedor(tabuleiro)
+        # Odeio como o jogo nao funciona sem isso... Antes eu tinha consertado de alguma forma...
         if jogo_rodando == False:
             break
         checar_Velha(tabuleiro)
-        #NAO SEI FAZER O JOGO ACABAR SEM ESSA DESGRACA
         if jogo_rodando == False:
             break
 
@@ -106,7 +103,6 @@ while True:
         if jogo_rodando == False:
             break
         checar_Velha(tabuleiro)
-        #NAO SEI FAZER O JOGO ACABAR SEM ESSA DESGRACA
         if jogo_rodando == False:
             break
         sleep(1)
