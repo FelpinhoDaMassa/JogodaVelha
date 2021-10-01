@@ -41,9 +41,17 @@ def checar_Vencedor(lista = []):
                 jogador_venceu = True
             elif lista[0][coluna] == 'X' and lista[1][coluna] == 'X' and lista[2][coluna] == 'X':
                 jogador_venceu = True
+            elif lista[0][0] == 'X' and lista[1][1] == 'X' and lista[2][2] == 'X':
+                jogador_venceu = True
+            elif lista[0][2] == 'X' and lista[1][1] == 'X'and lista[2][0] == 'X':
+                jogador_venceu = True
             elif lista[linha][0] == 'O' and lista[linha][1] == 'O' and lista[linha][2] == 'O':
                 cpu_venceu = True
             elif lista[0][coluna] == 'O' and lista[1][coluna] == 'O' and lista[2][coluna] == 'O':
+                cpu_venceu = True
+            elif lista[0][0] == 'O' and lista[1][1] == 'O' and lista[2][2] == 'O':
+                cpu_venceu = True
+            elif lista[0][2] == 'O' and lista[1][1] == 'O' and lista[2][0] == 'O':
                 cpu_venceu = True
 
     if jogador_venceu == True:
@@ -55,19 +63,23 @@ def checar_Vencedor(lista = []):
         jogo_rodando = False
 
 # CRIA O TABULEIRO
-tabuleiro = []
-for i in range(3):
-    tabuleiro.append([])
-    for j in range(3):
-        tabuleiro[i].append('')
+
 
 # VARIAVEIS GLOBAIS
 jogo_rodando = True
 jogador_linha = jogador_coluna = 0
 
 # LOOP DO JOGO
-titulo('JOGO DA VELHA')
+
 while True:
+    titulo('JOGO DA VELHA')
+    jogo_rodando = True
+    tabuleiro = []
+    for i in range(3):
+        tabuleiro.append([])
+        for j in range(3):
+            tabuleiro[i].append('')
+
     while jogo_rodando:
         mostrar(tabuleiro)
         checar_Vencedor(tabuleiro)
@@ -114,9 +126,5 @@ while True:
         resp = str(input('Por favor, responda com [S/N]: ')).upper()
     if resp in 'N':
         break
-    # else:
-    #     tabuleiro.clear
 
 print('Tenha um bom dia :)')
-
-# TO DO: IF-STATMENTS QUE CHECAM SE HA UM VENCEDOR
